@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block banner %}{% endblock %}
+
+{% block title %}Error{% endblock %}
+
+{% load static %}
+
+{% block stylesheet %}
+  <link rel="stylesheet" href="{% static 'css/accounts.css' %}">
+{% endblock %}
+
+{% block body %}
+ <div class="page-section" id="login">
+        <div class="row justify-content-center">
+            <h1> Error: {{ message }}</h1>
+        </div>
+ </div>
+{% endblock %}

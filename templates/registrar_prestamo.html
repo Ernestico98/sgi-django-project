@@ -1,0 +1,102 @@
+{% extends 'base_accounts.html' %}
+{% load form_tags widget_tweaks %}
+
+{% block title %}Registrar Préstamo{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center"> <font face="peraltaregular"> <h1>Registrar Préstamo</h1> </font> </div>
+    <div class="page-section">
+
+        <form method="post" novalidate>
+            {% csrf_token %}
+            <div class="row">
+                <div class="col"> <label>CI:</label> </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {% render_field form.CI class=form.CI|input_class %}
+                    {% for error in form.CI.errors %}
+                        <div class="invalid-feedback">
+                            {{ error  }}
+                        </div>
+                    {% endfor %}
+                    <div class="valid-feedback">
+                        El usuario puede recibir préstamos
+                    </div>
+                </div>
+                <div class="col"><button name="btn1" type="submit" class="btn btn-primary">Buscar Usuario</button></div>
+                <div class="col"><button name="btn_externo" type="submit" class="btn btn-dark">Registrar Usuario Externo</button> </div>
+            </div>
+
+            <div class="row">
+                <div class="col">{{form.descripcion.label_tag}}</div>
+            </div>
+            <div class="row">
+                <div class="col">{% render_field form.descripcion class=form.descripcion|input_class %}</div>
+                <div class="col"><button name="btn2" type="submit" class="btn btn-primary" {% if valid_btn1 is False %} disabled {% endif %} > Buscar Medio </button></div>
+                <div class="col"> </div>
+            </div>
+
+            <div class="row">
+                <div class="col"> <label>INV:</label> </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {% render_field form.INV class=form.INV|input_class %}
+                    {% for error in form.INV.errors %}
+                        <div class="invalid-feedback">
+                            {{ error  }}
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="col"></div>
+                <div class="col"></div>
+            </div>
+
+            <div class="row">
+                <div class="col"> <label>Fecha de devolucion:</label> </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {% render_field form.f_devolucion class=date_class type="date" %}
+                    {% for error in form.f_devolucion.errors %}
+                        <div class="invalid-feedback">
+                            {{ error }}
+                        </div>
+                    {% endfor %}
+                     {% if valid_btn3 %}
+                        <div class="valid-feedback">
+                            El préstamo ha sido registrado con éxito!!!
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="col"><button name="btn3" type="submit" class="btn btn-primary" {% if valid_btn1 is False %} disabled {% endif %}>Registrar Prestamo</button></div>
+                <div class="col"></div>
+            </div>
+        </form>
+        <br>
+
+    <div class="row justify-content-center">
+        <table class="table table-striped mb-4">
+            <thead class="thead-dark">
+                <tr>
+                    {% for i in header %}
+                        <th>{{ i }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in body %}
+                    <tr>
+                        {% for col in row %}
+                            <td class="align-middle">{{col}}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    </div>
+</div>
+{% endblock content %}

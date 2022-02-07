@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'peraltaregular';
+    src: url('../fonts/peralta-regular-webfont.eot');
+    src: url('../fonts/peralta-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/peralta-regular-webfont.woff') format('woff'),
+         url('../fonts/peralta-regular-webfont.ttf') format('truetype'),
+         url('../fonts/peralta-regular-webfont.svg#peraltaregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+

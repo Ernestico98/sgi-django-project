@@ -1,0 +1,35 @@
+{% extends 'base_accounts.html' %}
+{% load form_tags widget_tweaks %}
+
+{% block title %}Registrar Devolución{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center"> <font face="peraltaregular"> <h1>Registrar Devolución</h1> </font> </div>
+    <div class="page-section">
+
+        <form method="post" novalidate>
+            {% csrf_token %}
+            <div class="row">
+                <div class="col"> <label>CI:</label> </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {% render_field form.INV class=form.INV|input_class %}
+                    {% for error in form.INV.errors %}
+                        <div class="invalid-feedback">
+                            {{ error  }}
+                        </div>
+                    {% endfor %}
+                    <div class="valid-feedback">
+                        La devolucion ha sido registrada con exito
+                    </div>
+                </div>
+                <div class="col"><button type="submit" class="btn btn-primary">Registrar Devolucion</button></div>
+            </div>
+
+
+        </form>
+
+    </div>
+</div>
+{% endblock content %}
